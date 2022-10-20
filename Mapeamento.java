@@ -2,9 +2,9 @@ package trabalho;
 
 public class Mapeamento {
 	private String coordenada[][]=new String[9][17];
+	private ArrayList<String>Aag=new ArrayList<String>();
 	
-	
-	public void mapeiaAreaDoGol() {
+	public Mapeamento() {
 		int i,j;
 		coordenada[2][2]="g";
 		coordenada[2][15]="g";
@@ -21,7 +21,7 @@ public class Mapeamento {
 				coordenada[i][j]="t";
 			}
 			for(i=0,j=0;j<=16;j++) {
-				coordenada[i][j]="t";
+				coordenada[i][j]="f";
 			}
 			for(i=1,j=0;i<=8;i++) {
 				coordenada[i][j]="f";
@@ -29,14 +29,18 @@ public class Mapeamento {
 			for(i=0,j=16;i<=8;i++) {
 				coordenada[i][j]="f";
 			}
-			
-			
+			for(i=0;i<9;i++) {
+				for(j=0;j<=16;j++) {
+					if(coordenada[i][j]==null) {
+						coordenada[i][j]="d";
+					}
+				}
+			}
+			coordenada[2][15]="g";
 	}
+	
 
 	public String lugar(int x,int y) {
-		if(coordenada[x][y]==null) {
-			coordenada[x][y]="d";
-		}
 		return coordenada[x][y];
 	}
 	public String[][] getCoordenada() {
@@ -46,6 +50,16 @@ public class Mapeamento {
 
 	public void setCoordenada(String[][] coordenada) {
 		this.coordenada = coordenada;
+	}
+	public void ImprimeGol() {
+		for(int i=0;i<9;i++) {
+			for(int j=0;j<17;j++) {
+				System.out.print(coordenada[i][j]+ " ");
+			}
+			System.out.println();
+		}
+		
+		
 	}
 	
 }
