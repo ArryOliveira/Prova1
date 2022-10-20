@@ -6,7 +6,12 @@ public class Chute {
 	private int x;
 	private int y;
 	
-	public void verificaQuadrante() {
+
+	public Chute(int força, int x, int y) {
+		super();
+		this.força = força;
+		this.x = x;
+		this.y = y;
 		if(y>=0 && y<=7 && x>=0 && x<=4) {
 			quadrante=1;
 		}
@@ -20,14 +25,42 @@ public class Chute {
 			quadrante=4;
 		}
 	}
-
-	public Chute(int força, int x, int y) {
-		super();
-		this.força = força;
-		this.x = x;
-		this.y = y;
+	public int SorteiaX(int quadrante) {
+		int i=0;;
+		if(quadrante==1) {
+			i=sortear(0,4);
+		}
+		if(quadrante==2) {
+			i=sortear(0,4);
+		}
+		if(quadrante==3) {
+			i=sortear(5,8);
+		}
+		if(quadrante==4) {
+			i=sortear(5,8);
+		}
+		return i;
 	}
-
+	public int SorteiaY(int quadrante) {
+	int j=0;
+	if(quadrante==1) {
+		j=sortear(0,7);
+	}
+	if(quadrante==2) {
+		j=sortear(8,16);
+	}
+	if(quadrante==3) {
+		j=sortear(0,7);
+	}
+	if(quadrante==4) {
+		j=sortear(8,16);
+	}
+	return j;
+}
+	 public int sortear(int minimo, int maximo) {
+	        Random random = new Random();
+	        return random.nextInt((maximo - minimo) + 1) + minimo;
+	    }
 	public int getForça() {
 		return força;
 	}
