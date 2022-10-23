@@ -52,7 +52,7 @@ public class Goleiro {
 		aag=(int)(3*velocidade)+(2*flexibilidade)+(3*agilidade)+(2*coordenacao)+(força)+(2*equilibrio);
 		aag=(int)aag/8;
 
-		if(aag<1 && aag>16) {
+		if(aag<1 || aag>16) {
 			aag=0;
 		}
 	}
