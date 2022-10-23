@@ -32,17 +32,21 @@ public class Selecao {
 			this.listaGoleiro = listaGoleiro;
 		}
 	public void CalculaGol(Selecao s) {
+		System.out.println("Goleiros da selecao da(o):"+s.getNome());
+		System.out.println("\n");
 		for(Goleiro g : s.getListaGoleiro()) {
 			System.out.print("Goleiro:"+g.getNome());
 			for(Chute c : g.getListaChute()) {
 				int AuxL=c.SorteiaX(c.getQuadrante());
 				int AuxC=c.SorteiaY(c.getQuadrante());
-				//Compara(AuxL,AuxC,g.getAag());
-				//System.out.println("resultado:"+ContabilizaGol(Compara(AuxL,AuxC,g.getAag()),c,g));
 				g.AddRes(ContabilizaGol(Compara(AuxL,AuxC,g.getAag()),c,g));
 			}
 			System.out.println();
-			System.out.println("media:"+CalculaMedia(g.getListaResultado()));
+			System.out.println();
+			System.out.println("media de gols defendidos:"+CalculaMedia(g.getListaResultado()));
+			float diferença=(float)100-(CalculaMedia(g.getListaResultado()));
+			System.out.println("media de gols levados:"+diferença);
+			System.out.println();
 		}
 	}
 	
@@ -61,6 +65,7 @@ public class Selecao {
 		}
 		return nome;
 	}
+
 	public float CalculaMedia(ArrayList<Integer>lista) {
 		int soma=0;
 		float media=0;
@@ -86,6 +91,7 @@ public class Selecao {
 		}
 		return Contador;
 	}
+	
 	public String[][] Compara(int x,int y,int aag) {
 		int auxi= x, auxj = y,area=0;
 		String Mgoleiro[][]=new String[9][17];
@@ -108,12 +114,7 @@ public class Selecao {
 			}
 			
 		}while (area<aag);
-		/*for(int i=0;i<9;i++) {
-			for(int j=0;j<17;j++) {
-				System.out.print(Mgoleiro[i][j]+" ");
-			}
-			System.out.println();
-		}*/
+		
 		return Mgoleiro;
 	}
 	public void CopiaArea(String x[][],String y[][]) {
@@ -123,6 +124,7 @@ public class Selecao {
 			}
 		}
 	}
+	
 
 	}
 
